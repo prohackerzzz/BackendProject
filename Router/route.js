@@ -13,7 +13,7 @@ route.get('/:source/:target',async(req,res)=>{
     const text = req.body.text;
     const src = req.params.source;
     const tar = req.params.target;
-    result = text;
+    const result = `${src}/${tar}/${text}`;// to store th data with path so that wrong url won't get served with cache data
     
     getData(result,async function(err,data){
         if (err) {
@@ -22,19 +22,19 @@ route.get('/:source/:target',async(req,res)=>{
         }           
         if(data !== null){
         
-        res.send(data)//if data exists send data to the user
+        res.status(200).send(data)//if data exists send data to the user
         }
         else{
             try{
                 const resp = await translate(text,{to:tar,from:src});
-                const result = text;
+                const result = `${src}/${tar}/${text}`;
                 
                 putData(result,resp)
                 res.send(resp)
 
             }
             catch(err){
-                res.send("Theres some error with your query")
+                res.status(400).send("Theres some error with your query")
             }
         }
     });

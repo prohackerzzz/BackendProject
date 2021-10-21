@@ -11,5 +11,12 @@ I'd used translate library to translate our text.
 
 I think we can implement pre-caching in our application by using previous translations of user. For ex :- if a user first translated a text to hindi and second time he translates the text to marathi. So third time when the user will translate the text we will cache the translation of others language as well.
 
+For setting up the server open the file in your desired editor
+and do npm i to install the dependencies and just type node server.js or npm start 
+
+I'd done two tests using mocha and chai on our api we get both the results as passed.
+
+The Schema of our database is simple it's just a key value pair.
+
 
 
